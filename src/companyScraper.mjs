@@ -42,7 +42,7 @@ const writeSymbol = items => {
 }
 
 
-companyParse = (url) => rp(url)
+companySymbolScraper = (url) => rp(url)
   .then(cheerio.load)
   .then(parseHtml('#company-list tr'))
   .then(parseRows)
@@ -50,4 +50,4 @@ companyParse = (url) => rp(url)
   .then(writeSymbol)
   .catch(console.error)
 
-module.exports = companyParse;
+module.exports = companySymbolScraper;

@@ -1,8 +1,14 @@
 const fs = require('fs');
+const {format} = require('date-fns');
 
-const companyScraper = require('./companyScraper.mjs');
+const companySymbolScraper = require('./companyScraper.mjs');
+const todayPriceScraper = require('./todayPriceScraper.mjs') ;
 
 if (require.main === module) {
   const config = JSON.parse(fs.readFileSync('./config.json'));
-  companyScraper(config['COMPANY_SYMBOL']);
+  // companySymbolScraper(config['COMPANY_SYMBOL']);
+  todayPriceScraper({
+    'uri':config['TODAY_PRICE'],
+    'payload': config['data']
+  });
 }
