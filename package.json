@@ -1,0 +1,13 @@
+{
+  "name": "nepse-api",
+  "version": "1.0.0",
+  "description": "Scrapes and serves data from the Nepal Stock Exchange's website",
+  "main": "index.js",
+  "repository": "https://gitlab.com/AJRedDevil/nepse-api.git",
+  "author": "Ajan Lal Shrestha <ajan.shresh@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node src/index.mjs"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "BASE_URL": "http://www.nepalstock.com",
+  "TODAY_PRICE": "http://www.nepalstock.com/todaysprice",
+  "data": {
+    "startDate": "",
+    "stock-symbol": "",
+    "_limit": 500
+  }
+}
