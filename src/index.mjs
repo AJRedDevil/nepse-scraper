@@ -1,5 +1,4 @@
 const fs = require('fs');
-const {format} = require('date-fns');
 
 const companySymbolScraper = require('./companyScraper.mjs');
 const todayPriceScraper = require('./todayPriceScraper.mjs') ;

@@ -1,7 +1,8 @@
 const fs = require('fs');
 
-const rp = require('request-promise');
 const cheerio = require('cheerio');
+const rp = require('request-promise');
+const {format} = require('date-fns');
 
 const parseHtml = selector => $ => $(selector);
 const findHtml = selector => html => cheerio(html).find(selector);
@@ -39,7 +40,7 @@ const writeSymbol = items => {
   if (!stats.isDirectory()) {
     fs.mkdirSync('data');
   }
-  fs.writeFileSync('data/todayPrice.json', JSON.stringify(items), 'utf-8');
+  fs.writeFileSync(`data/${format(new Date(), 'YYYY-MM-DD')}.json`, JSON.stringify(items), 'utf-8');
 }
 const getOptions = ({uri, payload}) => ({
   method: 'POST',
