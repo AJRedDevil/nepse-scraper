@@ -1,7 +1,8 @@
 {
   "BASE_URL": "http://www.nepalstock.com",
   "TODAY_PRICE": "http://www.nepalstock.com/todaysprice",
-  "COMPANY_SYMBOL": "http://www.nepalstock.com/company",
+  "COMPANY_SYMBOL_URL": "http://www.nepalstock.com/company",
+  "STOCKWISE_PRICES_URL": "http://www.nepalstock.com/main/stockwiseprices/index/1",
   "data": {
     "startDate": "",
     "stock-symbol": "",
