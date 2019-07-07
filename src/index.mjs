@@ -21,7 +21,9 @@ const stockPriceScraper = async url => {
 
 if (require.main === module) {
   const config = JSON.parse(fs.readFileSync('./config.json'));
+  // console.log('Scraping Company Symbol ID');
   // companySymbolScraper(config['COMPANY_SYMBOL_URL']);
+  console.log('Scraping Stockwise Price');
   stockPriceScraper(config['STOCKWISE_PRICES_URL']);
   // todayPriceScraper({
   //   'uri':config['TODAY_PRICE'],

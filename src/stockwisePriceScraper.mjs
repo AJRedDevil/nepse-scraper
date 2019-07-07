@@ -14,20 +14,24 @@ const options = {
 
 const parseHtml = selector => $ => $(selector);
 const findHtml = selector => html => cheerio(html).find(selector);
+const parseRows = allItems => {
+  const filteredHeaderFooters = allItems.slice(2, allItems.length - 1);
+  return filteredHeaderFooters.map((i, item) => findHtml('td')(item)).get();
+};
 const parseText = item =>
   cheerio(item)
     .text()
     .trim();
 const parseNumber = item => parseFloat(parseText(item));
-const parseRows = allItems => {
-  const filteredHeaderFooters = allItems.slice(2, allItems.length - 1);
-  return filteredHeaderFooters.map((i, item) => findHtml('td')(item)).get();
-};
+// 3pm the end of stock market
+const addFinalTime = date => `${date} 15:00:00`;
+const convertToTimestamp = date => new Date(addFinalTime(date)).getTime();
 const stockPrices = items => {
   const stockPrices = [];
   for (let rows of items) {
     stockPrices.push({
       date: parseText(rows[1]),
+      timestamp: convertToTimestamp(parseText(rows[1])),
       totalTransactions: parseNumber(rows[2]),
       totalTradeShares: parseNumber(rows[3]),
       totalTradeAmount: parseNumber(rows[4]),
@@ -49,8 +53,7 @@ const writeStockwisePrice = id => items => {
   );
 };
 
-stockwisePriceScraper = (url, id) => {
-  console.log(id);
+stockwisePriceScraper = (url, id) =>
   rp(url, {qs: Object.assign(options, {'stock-symbol': id})})
     .then(cheerio.load)
     .then(parseHtml('#home-contents table tr'))
@@ -58,6 +61,5 @@ stockwisePriceScraper = (url, id) => {
     .then(stockPrices)
     .then(writeStockwisePrice(id))
     .catch(console.error);
-};
 
 module.exports = stockwisePriceScraper;
