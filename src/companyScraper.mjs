@@ -35,7 +35,7 @@ const companyListing = items => {
       name: parseText(rows[2]),
       symbol: parseText(rows[3]),
       sector: parseText(rows[4]),
-      companyId: parseHref(rows[5]),
+      companyID: parseHref(rows[5]),
     });
   }
   return companies;
